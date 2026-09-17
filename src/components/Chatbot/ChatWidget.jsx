@@ -7,7 +7,7 @@ import { X, Send, Trash2, Bot, User, Loader2, MessageSquare, Sparkles } from 'lu
 // ─────────────────────────────────────────────
 // Vite uses import.meta.env for environment variables.
 // Fallback to http://localhost:5000 in development if not configured.
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 
 const WELCOME_MESSAGE = {
   id: 'welcome',
