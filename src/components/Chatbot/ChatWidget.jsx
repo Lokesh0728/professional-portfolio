@@ -5,9 +5,18 @@ import { X, Send, Trash2, Bot, User, Loader2, MessageSquare, Sparkles } from 'lu
 // ─────────────────────────────────────────────
 // CONFIGURATION
 // ─────────────────────────────────────────────
-// Vite uses import.meta.env for environment variables.
-// Fallback to http://localhost:5000 in development if not configured.
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+const getApiUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && !envUrl.includes('localhost')) {
+    return envUrl.replace(/\/$/, '');
+  }
+  if (typeof window !== 'undefined' && !['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    return 'https://portfolio-backend-h174.onrender.com';
+  }
+  return (envUrl || 'http://localhost:5000').replace(/\/$/, '');
+};
+
+const API_URL = getApiUrl();
 
 const WELCOME_MESSAGE = {
   id: 'welcome',
