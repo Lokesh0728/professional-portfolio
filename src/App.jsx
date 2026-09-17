@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ChatWidget from './components/Chatbot/ChatWidget'
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
       <Projects />
       <Contact />
       <Footer />
+      {/* AI Chatbot Widget — floats above all content */}
+      <ChatWidget />
     </main>
   )
 }
