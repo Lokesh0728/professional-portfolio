@@ -5,18 +5,18 @@ import { Briefcase, Award, Calendar, ChevronRight } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      role: "Frontend Developer (Paid Intern)",
+      role: "Fullstack Developer",
       company: "Xorticantechlogic",
       period: "May 2026 – Present",
-      type: "Work",
+      type: "Full-time",
       icon: <Briefcase size={20} />,
       color: "from-green-500 to-emerald-400",
       iconBg: "bg-green-500/20 text-green-400 border-green-500/30",
-      description: "Currently working as a Frontend Developer, contributing to modern web applications, building interactive user interfaces, and ensuring responsive, high-performance designs.",
+      description: "Currently working as a Fullstack Developer, architecting end-to-end web applications, developing robust backend APIs, and building responsive, high-performance user interfaces.",
       highlights: [
-        "Developing scalable frontend architectures",
-        "Collaborating on real-world client deliverables",
-        "Optimizing UI/UX with modern CSS frameworks"
+        "Building scalable full-stack web applications and RESTful APIs",
+        "Developing responsive, dynamic user interfaces and optimizing performance",
+        "Collaborating on production client deliverables and end-to-end features"
       ]
     },
     {

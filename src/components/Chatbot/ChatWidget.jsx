@@ -194,10 +194,20 @@ const ChatWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Focus textarea when window opens
+  // Auto-open chatbot shortly after user enters the site so they know it is active and alive
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => textareaRef.current?.focus(), 250);
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Focus textarea when window opens (desktop only, to avoid sudden keyboard popup on mobile)
+  useEffect(() => {
+    if (isOpen && typeof window !== 'undefined' && window.innerWidth >= 768) {
+      const timer = setTimeout(() => textareaRef.current?.focus(), 300);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
@@ -284,7 +294,7 @@ const ChatWidget = () => {
   const isInitialState = messages.length === 1 && messages[0].id === 'welcome';
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3 sm:gap-4">
 
       {/* ── Chat Window ── */}
       <AnimatePresence>
@@ -296,14 +306,14 @@ const ChatWidget = () => {
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="
-              w-[90vw] sm:w-[400px]
-              h-[560px] max-h-[80vh]
+              w-[calc(100vw-2rem)] sm:w-[400px]
+              h-[540px] max-h-[78vh] sm:max-h-[80vh]
               flex flex-col
               bg-[#0a0a0a]
               border border-white/10
               rounded-3xl
               overflow-hidden
-              shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_30px_rgba(239,68,68,0.08)]
+              shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_30px_rgba(239,68,68,0.12)]
             "
             role="dialog"
             aria-label="AI Chat assistant"
