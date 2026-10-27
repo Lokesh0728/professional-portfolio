@@ -20,7 +20,7 @@ const Experience = () => {
       ]
     },
     {
-      role: "MERN Stack Developer Intern (Unpaid)",
+      role: "MERN Stack Developer Intern ",
       company: "Xplore Intellects Pvt Ltd",
       period: "Jan 2026 – Apr 2026 (3 Months)",
       type: "Internship",
